@@ -1,7 +1,9 @@
-Card Management System
+# Card Management System
+
 This project is a Card Management System built with React, Redux, TypeScript, and Tailwind CSS. It allows users to manage credit and debit cards, view transactions, and add new cards with validations.
 
-Features
+# Features
+
 View Transactions: Click to show all transactions.
 
 Card Details: Manage and view saved credit and debit cards.
@@ -12,7 +14,8 @@ Toggle Card Number: Show or hide the full card number.
 
 Lock/Unlock Card: Lock or unlock a card.
 
-Tech Stack
+# Tech Stack
+
 React: JavaScript library for building user interfaces.
 
 Redux: State management library for JavaScript apps.
@@ -25,7 +28,7 @@ Installation
 Clone the repository:
 
 bash
-git clone https://github.com/your-username/card-management-system.git
+git clone https://github.com/rajnish-kumar-au26/card-management-app.git
 Navigate to the project directory:
 
 bash
@@ -41,39 +44,24 @@ bash
 npm start
 Open your browser and navigate to http://localhost:3000.
 
-Project Structure
-src/
-├── components/
-│ ├── AddCardModal.tsx
-├── store/
-│ ├── cardsSlice.ts
-│ ├── transactionsSlice.ts
-│ ├── store.ts
-├── pages/
-│ ├── Cards.tsx
-├── App.tsx
-├── index.tsx
-└── main.tsx
-Components
-Cards Component
-Tabs: Allows users to switch between viewing transactions, credit cards, and debit cards.
+# Transactions:
 
-Transactions: Initially shows a button to display all transactions; shows a list of all transactions upon clicking.
+Initially shows a button to display all transactions; shows a list of all transactions upon clicking.
 
 Credit Cards & Debit Cards: Separates and renders credit and debit cards in respective tabs.
 
 Card Actions: Includes buttons for showing/hiding the card number and locking/unlocking cards.
 
-AddCardModal Component
-Form Fields: Includes fields for card details like name, bank name, card type, card number, validity, and CVV.
+# Validations:
 
-Validations: Ensures that all required fields are correctly filled out, including checking the card number format and future date for validity.
+Ensures that all required fields are correctly filled out, including checking the card number format and future date for validity.
 
 Checkbox Options: Options to set the card as default and add the card to Google Pay.
 
 Error Handling: Displays errors if validations are not met.
 
-Store Configuration
+# Store Configuration
+
 cardsSlice: Manages state for card details and includes actions for adding new cards.
 
 transactionsSlice: Manages state for transaction details and includes actions for adding transactions.
