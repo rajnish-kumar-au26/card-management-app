@@ -2,6 +2,10 @@
 
 This project is a Card Management System built with React, Redux, TypeScript, and Tailwind CSS. It allows users to manage credit and debit cards, view transactions, and add new cards with validations.
 
+# Live Demo
+
+Check out the live demo of the application: https://benevolent-empanada-0a8bd6.netlify.app/
+
 # Features
 
 View Transactions: Click to show all transactions.
