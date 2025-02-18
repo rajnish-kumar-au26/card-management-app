@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { RootState } from "../store/store";
 import { Card, addCard } from "../store/cardsSlice";
 import AddCardModal from "../components/AddCardModal";
+import CardComponent from "../components/CardComponent";
 
 const Cards: React.FC = () => {
   const [selectedTab, setSelectedTab] = useState<
@@ -80,6 +81,7 @@ const Cards: React.FC = () => {
           + Add Card
         </button>
       </div>
+
       {selectedTab === "transactions" && (
         <div className="w-full p-4 bg-white shadow-md rounded-lg">
           <h2 className="text-lg font-semibold mb-4">Transactions</h2>
@@ -112,78 +114,49 @@ const Cards: React.FC = () => {
           )}
         </div>
       )}
+
       {selectedTab === "credit-cards" && (
         <div className="w-full p-4 bg-white shadow-md rounded-lg">
           <h2 className="text-lg font-semibold mb-4">Credit Cards</h2>
           {filterCardsByType("Credit").map((card) => (
-            <div
+            <CardComponent
               key={card.id}
-              className="p-2 border-b border-gray-200 flex justify-between items-center"
-            >
-              <div>
-                <p>{card.name}</p>
-                <p>{card.bankName}</p>
-                <p>{card.type}</p>
-                <p>
-                  {showFullNumber[card.id]
-                    ? card.number
-                    : `**** **** **** ${card.number.slice(-4)}`}
-                </p>
-              </div>
-              <div className="flex space-x-2">
-                <button
-                  className="p-2 bg-green-500 text-white rounded"
-                  onClick={() => toggleShowFullNumber(card.id)}
-                >
-                  {showFullNumber[card.id] ? "Hide" : "Show"} Card Number
-                </button>
-                <button
-                  className="p-2 bg-red-500 text-white rounded"
-                  onClick={() => toggleLockCard(card.id)}
-                >
-                  {lockedCards[card.id] ? "Unlock" : "Lock"} Card
-                </button>
-              </div>
-            </div>
+              cardNumber={card.number}
+              cardHolder={card.name}
+              expiryDate={card.validTill}
+              isLocked={!!lockedCards[card.id]}
+              onLockToggle={() => toggleLockCard(card.id)}
+              onArchive={() => console.log("Archive", card.id)}
+              onSetDefault={() => console.log("Set Default", card.id)}
+              onAddToGPay={() => console.log("Add to GPay", card.id)}
+              onShowCardNumber={() => toggleShowFullNumber(card.id)}
+              showFullNumber={showFullNumber[card.id]}
+            />
           ))}
         </div>
       )}
+
       {selectedTab === "debit-cards" && (
         <div className="w-full p-4 bg-white shadow-md rounded-lg">
           <h2 className="text-lg font-semibold mb-4">Debit Cards</h2>
           {filterCardsByType("Debit").map((card) => (
-            <div
+            <CardComponent
               key={card.id}
-              className="p-2 border-b border-gray-200 flex justify-between items-center"
-            >
-              <div>
-                <p>{card.name}</p>
-                <p>{card.bankName}</p>
-                <p>{card.type}</p>
-                <p>
-                  {showFullNumber[card.id]
-                    ? card.number
-                    : `**** **** **** ${card.number.slice(-4)}`}
-                </p>
-              </div>
-              <div className="flex space-x-2">
-                <button
-                  className="p-2 bg-green-500 text-white rounded"
-                  onClick={() => toggleShowFullNumber(card.id)}
-                >
-                  {showFullNumber[card.id] ? "Hide" : "Show"} Card Number
-                </button>
-                <button
-                  className="p-2 bg-red-500 text-white rounded"
-                  onClick={() => toggleLockCard(card.id)}
-                >
-                  {lockedCards[card.id] ? "Unlock" : "Lock"} Card
-                </button>
-              </div>
-            </div>
+              cardNumber={card.number}
+              cardHolder={card.name}
+              expiryDate={card.validTill}
+              isLocked={!!lockedCards[card.id]}
+              onLockToggle={() => toggleLockCard(card.id)}
+              onArchive={() => console.log("Archive", card.id)}
+              onSetDefault={() => console.log("Set Default", card.id)}
+              onAddToGPay={() => console.log("Add to GPay", card.id)}
+              onShowCardNumber={() => toggleShowFullNumber(card.id)}
+              showFullNumber={showFullNumber[card.id]}
+            />
           ))}
         </div>
       )}
+
       {showModal && (
         <AddCardModal
           onClose={() => setShowModal(false)}
